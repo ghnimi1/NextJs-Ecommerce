@@ -71,7 +71,7 @@ const products = () => {
                                         <Button
                                             variant='danger'
                                             className='btn-sm'
-                                            onClick={() => deleteHandler(product._id)}
+                                            onClick={() => deleteHandler(product?._id)}
                                         >
                                             <i className='fas fa-trash'></i>
                                         </Button>
