@@ -14,8 +14,9 @@ const users = () => {
     const { success: successUpdate } = useSelector(state => state.updateUser)
     const { userInfo } = useSelector(state => state.userProfile)
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+
     useEffect(() => {
-        if (token && userInfo?.isAdmin) {
+        if (userInfo && userInfo?.isAdmin) {
             dispatch(fetchUsers())
         } else {
             router.push('/')
