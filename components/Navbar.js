@@ -13,7 +13,7 @@ const Navbar = () => {
 
     useEffect(() => {
         dispatch(fetchUserProfile())
-    }, [dispatch])
+    }, [, token])
 
     const Logout = () => {
         localStorage.removeItem('token')
@@ -49,7 +49,6 @@ const Navbar = () => {
                             transform: 'translateY(-3px)', marginRight: '3px'
                         }} /> {userInfo?.name}
                 </a>
-
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <Link href="/profile">
                         <a className="dropdown-item">Profile</a>
@@ -94,15 +93,15 @@ const Navbar = () => {
                                 </a>
                             </Link>
                         </li>
-                        {
-                            token && userInfo ? loggedRouter() : (<li className="nav-item">
-                                <Link href="/signin">
-                                    <a className={"nav-link"}>
-                                        <i className="fas fa-user" aria-hidden="true"></i> Sign in
-                                    </a>
-                                </Link>
-                            </li>)
-                        }
+                        {token && userInfo && loggedRouter()}
+                        {!token && <li className="nav-item">
+                            <Link href="/signin">
+                                <a className={"nav-link"}>
+                                    <i className="fas fa-user" aria-hidden="true"></i> Sign in
+                                </a>
+                            </Link>
+                        </li>}
+
                     </ul>
                 </div>
             </div>
