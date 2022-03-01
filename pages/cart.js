@@ -8,9 +8,14 @@ import { useRouter } from 'next/router';
 function cart(props) {
     const dispatch = useDispatch()
     const router = useRouter()
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
     const { cartItems } = useSelector((state) => state.cartItems)
     const checkout = () => {
-        router.push('/shipping')
+        if (token) {
+            router.push('/shipping')
+        } else {
+            router.push('/signin')
+        }
     }
     return (
         <div className='container'>

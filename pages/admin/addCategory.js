@@ -9,7 +9,6 @@ const addCategory = () => {
     const router = useRouter()
     const [categoryName, setCategoryName] = useState('')
     const dispatch = useDispatch()
-    //const { category } = useSelector(state => state.category)
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(createCategory({ categoryName }))

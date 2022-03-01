@@ -5,16 +5,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchMyOrder } from '../redux/actions/orderActions';
 import { fetchUserProfile, updateProfile } from '../redux/actions/usersActions';
 import Loader from '../components/Loader';
+import { useRouter } from 'next/router';
 
 function profile() {
     const dispatch = useDispatch()
+    const router = useRouter()
     const { userInfo } = useSelector(state => state.userProfile)
     const { orders, loading } = useSelector(state => state.myOrder)
     const [name, setName] = useState(userInfo?.name)
     const [email, setEmail] = useState(userInfo?.email)
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    useEffect(() => {
+        if (!token) {
+            router.push('/signin')
+        }
+    }, [])
     useEffect(() => {
         dispatch(fetchMyOrder())
     }, [dispatch, userInfo])

@@ -4,14 +4,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllOrders, deleteOrder } from '../../redux/actions/orderActions';
 import Link from 'next/link';
 import Loader from '../../components/Loader';
+import { useRouter } from 'next/router';
 
 const orders = () => {
     const dispatch = useDispatch()
+    const router = useRouter()
     const { orders, loading } = useSelector((state) => state.orders)
     const { success } = useSelector(state => state.deleteOrder)
-    //const { success: successUpdate } = useSelector(state => state.updateUser)
+    const { userInfo } = useSelector(state => state.userProfile)
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
     useEffect(() => {
-        dispatch(fetchAllOrders())
+        if (token && userInfo?.isAdmin) {
+            dispatch(fetchAllOrders())
+        } else {
+            router.push('/')
+        }
     }, [dispatch, success])
     const deleteHandler = (id) => {
         if (window.confirm('Are you sure')) {

@@ -14,7 +14,12 @@ function OrderPage() {
     const dispatch = useDispatch()
     const { userInfo } = useSelector(state => state.userProfile)
     const { order } = useSelector(state => state.order)
-
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    useEffect(() => {
+        if (!token) {
+            router.push('/signin')
+        }
+    }, [])
     useEffect(() => {
         const addPayPalScript = async () => {
             const { data: clientId } = await axios.get('/api/config/paypal')

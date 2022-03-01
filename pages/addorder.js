@@ -10,10 +10,16 @@ function addorder() {
     const router = useRouter()
     const { cartItems } = useSelector(state => state)
     const { order } = useSelector(state => state.order)
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
     useEffect(() => {
-        if (!cartItems.shippingAddress?.address) {
+        if (!token) {
+            router.push('/signin')
+        }
+    }, [])
+    useEffect(() => {
+        if (!cartItems?.shippingAddress?.address) {
             router.push('/shipping')
-        } else if (!cartItems.paymentMethod) {
+        } else if (!cartItems?.paymentMethod) {
             router.push('/payment')
         }
     }, [])

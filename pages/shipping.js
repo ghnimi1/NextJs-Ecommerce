@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../redux/actions/cartActions';
@@ -11,6 +11,12 @@ function shipping() {
     const [country, setCountry] = useState("")
     const dispatch = useDispatch()
     const router = useRouter()
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    useEffect(() => {
+        if (!token) {
+            router.push('/signin')
+        }
+    }, [])
     const shippingHandler = (e) => {
         e.preventDefault()
         dispatch(saveShippingAddress({ address, city, postalCode, country }))

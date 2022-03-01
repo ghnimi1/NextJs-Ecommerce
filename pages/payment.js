@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../redux/actions/cartActions';
@@ -8,6 +8,12 @@ function payment() {
     const [payment, setPayment] = useState("PayPal")
     const dispatch = useDispatch()
     const router = useRouter()
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
+    useEffect(() => {
+        if (!token) {
+            router.push('/signin')
+        }
+    }, [])
     const paymentMeth = () => {
         dispatch(savePaymentMethod(payment))
         router.push("/addorder")
