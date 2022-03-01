@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+/* import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Form, Button, Container, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,7 +6,7 @@ import { fetchAllCategory } from '../../redux/actions/categoryActions'
 import { useRouter } from 'next/router'
 import { addProducts } from '../../redux/actions/productsActions'
 
-const addProduct = () => {
+function addProduct() {
     const router = useRouter()
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
@@ -124,7 +124,6 @@ const addProduct = () => {
                                     onChange={(e) => setDescription(e.target.value)}
                                 ></Form.Control>
                             </Form.Group>
-
                             <Button type='submit' variant='primary'>
                                 Create
                             </Button>
@@ -136,4 +135,15 @@ const addProduct = () => {
     )
 }
 
-export default addProduct
+export default addProduct */
+import React from 'react';
+
+function addProduct(props) {
+    return (
+        <div>
+            ii
+        </div>
+    );
+}
+
+export default addProduct;

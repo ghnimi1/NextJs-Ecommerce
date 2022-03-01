@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+/* import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Form, Button, Container, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -148,4 +148,15 @@ const editProduct = () => {
     )
 }
 
-export default editProduct
+export default editProduct */
+import React from 'react';
+
+function det(props) {
+    return (
+        <div>
+            ii
+        </div>
+    );
+}
+
+export default det;
