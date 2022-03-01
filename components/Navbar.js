@@ -13,7 +13,7 @@ const Navbar = () => {
 
     useEffect(() => {
         dispatch(fetchUserProfile())
-    }, [, token])
+    }, [dispatch, token, router])
 
     const Logout = () => {
         localStorage.removeItem('token')
