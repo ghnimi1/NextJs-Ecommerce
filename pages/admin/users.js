@@ -16,7 +16,7 @@ const users = () => {
     const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
 
     useEffect(() => {
-        if (userInfo && userInfo?.isAdmin) {
+        if (token && userInfo && userInfo?.isAdmin) {
             dispatch(fetchUsers())
         } else {
             router.push('/')

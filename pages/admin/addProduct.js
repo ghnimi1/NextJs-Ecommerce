@@ -1,4 +1,4 @@
-/* import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Form, Button, Container, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -74,7 +74,7 @@ function addProduct() {
                                 <Form.Control
                                     type='file'
                                     placeholder='Enter image url'
-                                    value={FormData.image}
+                                    // value={FormData?.image}
                                     onChange={(e) => setImage(e.target.files[0])}
                                 ></Form.Control>
                             </Form.Group>
@@ -135,15 +135,4 @@ function addProduct() {
     )
 }
 
-export default addProduct */
-import React from 'react';
-
-function addProduct(props) {
-    return (
-        <div>
-            ii
-        </div>
-    );
-}
-
-export default addProduct;
+export default addProduct

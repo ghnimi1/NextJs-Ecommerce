@@ -1,4 +1,4 @@
-/* import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Form, Button, Container, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -86,7 +86,7 @@ const editProduct = () => {
                                 <Form.Control
                                     type='file'
                                     placeholder='Enter image url'
-                                    value={FormData.image}
+                                    //value={FormData.image}
                                     onChange={(e) => setImage(e.target.files[0])}
                                 ></Form.Control>
                             </Form.Group>
@@ -148,15 +148,4 @@ const editProduct = () => {
     )
 }
 
-export default editProduct */
-import React from 'react';
-
-function det(props) {
-    return (
-        <div>
-            ii
-        </div>
-    );
-}
-
-export default det;
+export default editProduct
